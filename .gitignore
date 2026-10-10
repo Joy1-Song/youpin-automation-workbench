@@ -1,0 +1,40 @@
+# Credentials and personal configuration, including historical backups
+.env*
+!.env.example
+config.local*
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+
+# Runtime account data, screenshots, reports and emulator state
+state/
+logs/
+*.log
+*.db
+*.sqlite*
+*.apk
+*.qcow2
+*.img
+*.avd/
+*.bak*
+*.backup*
+startup_backups/
+
+# Development and generated files
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.idea/
+.vscode/
+.pytest_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+dist/
+build/
+*.egg-info/
+Thumbs.db
+.DS_Store

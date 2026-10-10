@@ -1,0 +1,272 @@
+{
+  "api_base": "https://api.youpin898.com",
+  "event": "Cologne 2026",
+  "event_aliases": [
+    "Cologne 2026",
+    "2026年科隆锦标赛"
+  ],
+  "finish": "Holo",
+  "finish_aliases": [
+    "Holo",
+    "全息"
+  ],
+  "keywords": [
+    "Cologne 2026",
+    "2026年科隆锦标赛"
+  ],
+  "top_n": 10,
+  "purchase_num": 1,
+  "refreshes_per_day": 12,
+  "poll_seconds": 0,
+  "dry_run": true,
+  "state_file": "state/youpin_bidder_state.json",
+  "manage_existing_orders": true,
+  "purchase_automation": {
+    "enabled": false
+  },
+  "execution": {
+    "create_order_channel": "emulator_queue",
+    "emulator_command_file": "state/emulator_commands.json",
+    "emulator_status_file": "state/emulator_status.json",
+    "emulator_auto_process_create_orders": false,
+    "emulator_auto_submit_create_orders": false,
+    "emulator_create_process_limit": 10
+  },
+  "selection_strategy": {
+    "mode": "plugin:cs2_2026_low_price_bid",
+    "max_candidates": 120,
+    "min_on_sale_count": 5,
+    "watchlist": [],
+    "fill_remaining": true,
+    "fallback_mode": "cheapest",
+    "weights": {
+      "scarcity": 35,
+      "demand_supply": 30,
+      "affordability": 20,
+      "steam_discount": 10,
+      "brand": 5
+    },
+    "brand_teams": [
+      "Vitality",
+      "Team Vitality",
+      "G2 esports",
+      "G2 Esports",
+      "Astralis",
+      "Natus Vincere",
+      "NAVI",
+      "Team Spirit",
+      "MOUZ",
+      "FURIA",
+      "Team Liquid",
+      "Aurora"
+    ]
+  },
+  "strategy_plugins": {
+    "directories": [
+      "strategies"
+    ]
+  },
+  "quantity_strategy": {
+    "mode": "plugin:cs2_2026_low_price_bid",
+    "budget": 1000.0,
+    "min_quantity_per_item": 3,
+    "max_quantity_per_item": 5
+  },
+  "purchase_risk": {
+    "enabled": true,
+    "rolling_success_limit": 1000.0,
+    "lookback_hours": 24,
+    "window_mode": "calendar_day",
+    "day_start_hour": 0,
+    "include_active_order_exposure": true,
+    "active_order_exposure_multiplier": 2.0,
+    "fail_if_inventory_unavailable": true
+  },
+  "buy_price_fill": {
+    "enabled": true,
+    "lookback_hours": 48,
+    "match_window_minutes": 180,
+    "max_pending_events": 500,
+    "emulator_auto_queue": false,
+    "emulator_auto_process": false,
+    "emulator_auto_submit": false,
+    "emulator_process_limit": 3,
+    "stickers_only": true,
+    "keywords": [
+      "Cologne 2026"
+    ],
+    "finish": "Holo"
+  },
+  "daily_report": {
+    "enabled": false,
+    "email_to": "",
+    "lookback_hours": 24,
+    "scheduled_hour": 0,
+    "scheduled_minute": 0,
+    "delivery_window_minutes": 90,
+    "send_missed": false,
+    "state_file": "state/daily_report_state.json",
+    "report_file": "state/daily_report_last.json",
+    "subject_prefix": "YouPin daily report",
+    "stickers_only": true,
+    "keywords": [
+      "Cologne 2026"
+    ],
+    "finish": "Holo",
+    "smtp_host": "",
+    "smtp_port": 465,
+    "smtp_ssl": true,
+    "smtp_starttls": false,
+    "smtp_user_env": "SMTP_USER",
+    "smtp_password_env": "SMTP_PASSWORD",
+    "smtp_from": ""
+  },
+  "price_alert": {
+    "enabled": false,
+    "email_to": "",
+    "poll_seconds": 1800,
+    "state_file": "state/price_alert_state.json",
+    "subject_prefix": "YouPin price alert",
+    "rules": []
+  },
+  "cleanup_strategy": {
+    "enabled": true,
+    "auto_execute": false,
+    "scope": "strategy_targets_only",
+    "max_delete_per_cycle": 20,
+    "reset_target_orders_each_cycle": true,
+    "reset_only_partially_filled": false,
+    "event": "Cologne 2026",
+    "finish": "Holo",
+    "preserve_template_ids": [],
+    "preserve_order_nos": [],
+    "preserve_keywords": []
+  },
+  "cs_update_guard": {
+    "enabled": true,
+    "auto_cancel": false,
+    "pause_bidding_on_update": true,
+    "email_alert": false,
+    "email_to": "",
+    "email_subject_prefix": "CS2 update alert",
+    "appid": 730,
+    "poll_seconds": 60,
+    "news_count": 10,
+    "maxlength": 500,
+    "state_file": "state/cs_update_guard_state.json",
+    "title_keywords": [
+      "Counter-Strike 2 Update",
+      "Release Notes"
+    ]
+  },
+  "price_source": {
+    "refresh_detail_price": false,
+    "max_search_pages": 15,
+    "page_size": 50
+  },
+  "inventory": {
+    "page_size": 50,
+    "max_pages": 20,
+    "use_v3": true,
+    "v3_page_size": 100
+  },
+  "inventory_market": {
+    "request_interval_seconds": 0.2
+  },
+  "exit_strategy": {
+    "enabled": true,
+    "auto_execute": false,
+    "max_actions_per_cycle": 200,
+    "round_places": 1,
+    "tick": 0.1,
+    "list_price_mode": "target",
+    "off_shelf_interval_seconds": 0.2,
+    "relist_wait_seconds": 15,
+    "relist_poll_seconds": 1,
+    "auto_acknowledge_trade_withdrawal_notice": false,
+    "plugins": [
+      {
+        "mode": "plugin:cs2_2026_cologne_profit_exit",
+        "enabled": true,
+        "keywords": [
+          "Cologne 2026"
+        ],
+        "finish": "Holo",
+        "stickers_only": true,
+        "min_profit_ratio": 0.5,
+        "price_minus": 0.1,
+        "target_active_items_per_template": 3,
+        "max_reconcile_actions_per_cycle": 200,
+        "sale_book_page_size": 100,
+        "sale_book_max_pages": 20,
+        "round_places": 1,
+        "min_list_price": 0.1
+      }
+    ],
+    "rules": []
+  },
+  "bid_strategy": {
+    "mode": "plugin:cs2_2026_low_price_bid",
+    "minus": 0.1,
+    "ratio": 0.85,
+    "entry_ratio": 0.85,
+    "target_rank": 2,
+    "rank_target_mode": "queue",
+    "use_live_order_book": true,
+    "use_book_top_price": true,
+    "modify_interval_seconds": 60,
+    "allow_create_orders": false,
+    "step_up": 0.5,
+    "step_down": 0.1,
+    "max_bid_to_sell_ratio": 1.0,
+    "prevent_bid_at_or_above_sell": true,
+    "tick": 0.1,
+    "min_unit_price": 0.1,
+    "max_unit_price": 1000.0,
+    "max_cycle_spend": 1000.0,
+    "max_daily_spend": 1000.0,
+    "round_places": 1,
+    "skip_if_no_reference_price": true
+  },
+  "team_names": [
+    "9z Team",
+    "Astralis",
+    "Aurora",
+    "B8",
+    "BetBoom Team",
+    "BIG",
+    "Falcons",
+    "Team Falcons",
+    "FlyQuest",
+    "FURIA",
+    "FUT Esports",
+    "G2 Esports",
+    "Gaimin Gladiators",
+    "GamerLegion",
+    "HEROIC",
+    "Legacy",
+    "Lynn Vision",
+    "Lynn Vision Gaming",
+    "M80",
+    "MIBR",
+    "Monte",
+    "MOUZ",
+    "Natus Vincere",
+    "NAVI",
+    "NRG",
+    "paiN Gaming",
+    "paiN",
+    "PARIVISION",
+    "Sharks",
+    "Sharks Esports",
+    "SINNERS",
+    "SINNERS Esports",
+    "Team Liquid",
+    "Team Spirit",
+    "The MongolZ",
+    "THUNDER dOWNUNDER",
+    "TYLOO",
+    "Vitality",
+    "Team Vitality"
+  ]
+}
